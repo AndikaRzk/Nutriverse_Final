@@ -1,0 +1,128 @@
+/* ===== FORUM SECTION ===== */
+.forum {
+    padding: 4rem 9%;
+    background-color: #f9f9f9;
+}
+
+.forum .thread-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Forum Thread Card */
+.thread {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    border-left: 0.5rem solid var(--orange);
+    display: flex;
+    flex-direction: column;
+}
+
+.thread .thread-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.thread .thread-title {
+    font-size: 2.2rem;
+    color: var(--black);
+    font-weight: 600;
+}
+
+.thread .thread-meta {
+    font-size: 1.3rem;
+    color: var(--light-color);
+}
+
+.thread .thread-content {
+    font-size: 1.5rem;
+    color: var(--black);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.thread .thread-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.thread .thread-actions button {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.5rem;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 0.3rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.thread .thread-actions button:hover {
+    background: #e56700;
+}
+
+/* Comment Section */
+.comment-section {
+    margin-top: 2rem;
+    border-top: var(--border);
+    padding-top: 2rem;
+}
+
+.comment {
+    background: #fafafa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 0.4rem solid var(--orange);
+}
+
+.comment .comment-author {
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.comment .comment-text {
+    font-size: 1.5rem;
+    color: var(--light-color);
+    line-height: 1.6;
+}
+
+.comment-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment-form textarea {
+    resize: vertical;
+    min-height: 10rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border: var(--outline);
+    border-radius: 0.5rem;
+    color: var(--black);
+    font-family: "Poppins", sans-serif;
+}
+
+.comment-form button {
+    align-self: flex-end;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #e56700;
+}
