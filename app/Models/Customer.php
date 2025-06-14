@@ -44,4 +44,20 @@ class Customer extends Authenticatable
 // {
 //     return $this->hasOne(Carts::class);
 // }
+
+/**
+     * Get the chats for the customer.
+     */
+    public function chats()
+    {
+        return $this->hasMany(Chats::class);
+    }
+
+    /**
+     * Get the messages sent by the customer.
+     */
+    public function messages()
+    {
+        return $this->morphMany(Messages::class, 'sender');
+    }
 }

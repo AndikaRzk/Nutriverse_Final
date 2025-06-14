@@ -43,4 +43,20 @@ class Consultant extends Authenticatable
             'price_per_session' => 'decimal:2',
         ];
     }
+
+    /**
+     * Get the chats for the consultant.
+     */
+    public function chats()
+    {
+        return $this->hasMany(Chats::class);
+    }
+
+    /**
+     * Get the messages sent by the consultant.
+     */
+    public function messages()
+    {
+        return $this->morphMany(Messages::class, 'sender');
+    }
 }

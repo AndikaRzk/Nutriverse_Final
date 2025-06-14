@@ -4,10 +4,12 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BmiRecordController;
 use App\Http\Controllers\CartsController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DeliveriesController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ForumpostsController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\SupplementController;
 use App\Models\Orders;
@@ -86,3 +88,22 @@ Route::post('/payment/notification', [OrdersController::class, 'processPaymentAn
 Route::get('/deliveries', [DeliveriesController::class, 'index'])->name('courier.deliveries.index');
 Route::get('/deliveries/{id}', [DeliveriesController::class, 'show'])->name('courier.deliveries.show');
 Route::put('/deliveries/{id}', [DeliveriesController::class, 'update'])->name('courier.deliveries.update');
+
+
+// chats untuk customers
+Route::get('/consultant', [ChatsController::class, 'indexConsultants'])->name('customer.consultants.index')->middleware(['auth:customers']);
+// Rute untuk memulai chat dengan konsultan tertentu
+Route::post('/chat/{consultant}', [ChatsController::class, 'startChat'])->name('customer.chat.start')->middleware(['auth:customers']);
+Route::get('/chat/{chat}', [ChatsController::class, 'showChat'])->name('customer.chat.show')->middleware(['auth:customers']);
+Route::post('/chat/{chat}/messages', [ChatsController::class, 'sendMessage'])->name('customer.chat.messages.store')->middleware(['auth:customers']);
+
+
+// chats untuk consultant
+// Rute dashboard atau daftar chat konsultan
+Route::get('/chats', [MessagesController::class, 'indexChats'])->name('consultant.chats.index')->middleware(['auth:consultants']);
+
+// Rute untuk menampilkan halaman chat spesifik
+Route::get('/chats/{chat}', [MessagesController::class, 'showChat'])->name('consultant.chat.show')->middleware(['auth:consultants']);
+
+// Rute untuk mengirim pesan dari konsultan
+Route::post('/chats/{chat}/messages', [MessagesController::class, 'sendMessage'])->name('consultant.chat.messages.store')->middleware(['auth:consultants']);

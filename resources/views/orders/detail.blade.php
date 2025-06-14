@@ -12,7 +12,7 @@
 
     /* You can remove 'body' styles here if already set in the main layout */
     /* If no body styles in the main layout, this can be kept but
-       it will only be effective if the navbar is outside 'body' or has more specific styles */
+        it will only be effective if the navbar is outside 'body' or has more specific styles */
     body {
         background-color: #f0f2f5; /* Soft background */
         color: #333;
@@ -25,43 +25,45 @@
     .order-detail-page {
         font-family: 'Poppins', sans-serif; /* Poppins only for this page */
         /* You can also add background-color: #f0f2f5; here
-           if you want to ensure the background is only in the content area */
+            if you want to ensure the background is only in the content area */
     }
 
     /* Target all styles within .order-detail-page */
     .order-detail-page .container {
-        max-width: 960px;
-        margin: 50px auto;
-        padding: 30px;
+        max-width: 1200px; /* **Increased width significantly for a wider layout** */
+        margin: 60px auto; /* Increased margin for more space around */
+        padding: 40px; /* **Increased padding for more internal space** */
         background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-radius: 15px; /* Slightly more rounded corners */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Stronger, more diffused shadow */
+        border: 1px solid #dbe2ea; /* Slightly more prominent border */
     }
 
     .order-detail-page .detail-card {
         background-color: #ffffff;
-        border-radius: 12px;
+        border-radius: 15px; /* Consistent rounded corners */
         overflow: hidden;
-        margin-bottom: 40px;
+        margin-bottom: 50px; /* More space between main card and buttons */
         border: 1px solid #e0e7ee;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.06); /* Subtle shadow for the card itself */
     }
 
     .order-detail-page .detail-card-header {
         background: linear-gradient(135deg, #4CAF50, #28a745);
         color: white;
-        padding: 25px 30px;
-        font-size: 2rem;
-        font-weight: 700;
+        padding: 30px 40px; /* **Increased padding for a grander header** */
+        font-size: 2.8rem; /* **Significantly larger header text** */
+        font-weight: 800; /* Extra bold */
         text-align: center;
-        letter-spacing: -0.5px;
+        letter-spacing: -1px; /* Tighter letter spacing for larger text */
     }
 
     .order-detail-page .detail-card-body {
-        padding: 40px;
+        padding: 50px; /* **Increased padding inside card body** */
     }
 
     .order-detail-page .section-block {
-        margin-bottom: 40px; /* Add margin-bottom to separate sections */
+        margin-bottom: 50px; /* **Increased margin-bottom to separate sections more** */
     }
 
     .order-detail-page .section-block:last-child {
@@ -69,28 +71,28 @@
     }
 
     .order-detail-page .section-heading {
-        font-size: 1.6rem;
-        font-weight: 600;
+        font-size: 2.2rem; /* **Larger section headings** */
+        font-weight: 700; /* Bolder */
         color: #2e7d32;
-        margin-bottom: 30px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid #e0e7ee;
+        margin-bottom: 35px; /* More space below heading */
+        padding-bottom: 15px; /* More padding for the underline effect */
+        border-bottom: 2px solid #cfe0e9; /* Slightly darker separator */
         display: flex;
         align-items: center;
     }
 
     .order-detail-page .section-heading i {
-        margin-right: 15px;
+        margin-right: 20px; /* More space for icons */
         color: #4CAF50;
-        font-size: 1.8rem;
+        font-size: 2.5rem; /* **Larger icons for section headings** */
     }
 
     .order-detail-page .info-row {
         display: flex;
         justify-content: space-between;
-        padding: 12px 0;
-        border-bottom: 1px dashed #f0f0f0;
-        font-size: 1.05rem;
+        padding: 15px 0; /* **Increased vertical padding for info rows** */
+        border-bottom: 1px dashed #e9ecef; /* Lighter dashed line */
+        font-size: 1.25rem; /* **Significantly larger info text** */
     }
 
     .order-detail-page .info-row:last-of-type {
@@ -98,34 +100,34 @@
     }
 
     .order-detail-page .info-row strong {
-        color: #555;
-        font-weight: 600;
+        color: #444; /* Darker for labels */
+        font-weight: 700; /* Bolder labels */
     }
 
     .order-detail-page .info-row span,
     .order-detail-page .info-row p {
-        color: #666;
+        color: #555; /* Slightly darker for values */
         text-align: right;
     }
 
     .order-detail-page .status-badge {
         display: inline-block;
-        padding: 8px 18px;
-        border-radius: 25px;
-        font-size: 0.9rem;
+        padding: 10px 22px; /* **Larger padding for badges** */
+        border-radius: 30px; /* More pill-like */
+        font-size: 1.1rem; /* **Larger font size for badges** */
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
         color: white; /* Default white for most badges */
-        margin-left: 15px;
+        margin-left: 20px; /* More space from label */
     }
 
-    .order-detail-page .badge-success { background-color: #28a745; color: white; } /* Keep white for success (green) */
-    .order-detail-page .badge-danger { background-color: #dc3545; color: white; }
-    .order-detail-page .badge-warning { background-color: #ffc107; color: #333; }
-    .order-detail-page .badge-info { background-color: #17a2b8; color: white; } /* Keep white for info (light blue) */
-    .order-detail-page .badge-primary { background-color: #007bff; color: white; } /* Keep white for primary (blue) */
-    .order-detail-page .badge-secondary { background-color: #6c757d; color: white; }
+    .order-detail-page .badge-success { background-color: #28a745; }
+    .order-detail-page .badge-danger { background-color: #dc3545; }
+    .order-detail-page .badge-warning { background-color: #ffc107; color: #333; } /* Ensure dark text for warning */
+    .order-detail-page .badge-info { background-color: #17a2b8; }
+    .order-detail-page .badge-primary { background-color: #007bff; }
+    .order-detail-page .badge-secondary { background-color: #6c757d; }
 
     /* Adjust text color for badges with dark backgrounds to ensure visibility */
     .order-detail-page .badge-success,
@@ -141,52 +143,52 @@
         color: #333;
     }
 
-
     .order-detail-page .items-table {
         width: 100%;
         border-collapse: separate;
-        border-spacing: 0 10px;
-        margin-top: 20px;
+        border-spacing: 0 15px; /* **Increased space between rows** */
+        margin-top: 25px; /* More top margin */
     }
 
     .order-detail-page .items-table th,
     .order-detail-page .items-table td {
-        padding: 18px;
+        padding: 22px; /* **Increased padding in table cells** */
         text-align: left;
         vertical-align: middle;
         border: none;
+        font-size: 1.15rem; /* **Larger font size for table content** */
     }
 
     .order-detail-page .items-table th {
         background-color: #eaf7ed;
         color: #2e7d32;
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: 1.05rem; /* Slightly larger for headers */
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
     }
 
-    .order-detail-page .items-table th:first-child { border-top-left-radius: 8px; }
-    .order-detail-page .items-table th:last-child { border-top-right-radius: 8px; }
+    .order-detail-page .items-table th:first-child { border-top-left-radius: 10px; } /* Slightly more rounded corners */
+    .order-detail-page .items-table th:last-child { border-top-right-radius: 10px; }
 
     .order-detail-page .items-table tbody tr {
         background-color: #ffffff;
         border: 1px solid #e0e7ee;
-        border-radius: 8px;
+        border-radius: 10px; /* Consistent rounded corners */
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .order-detail-page .items-table tbody tr:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transform: translateY(-5px); /* More pronounced lift on hover */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Stronger shadow on hover */
     }
 
     .order-detail-page .items-table img {
-        width: 60px;
-        height: 60px;
+        width: 70px; /* **Larger image size** */
+        height: 70px; /* **Larger image size** */
         object-fit: cover;
-        border-radius: 8px;
-        margin-right: 15px;
+        border-radius: 10px; /* Consistent rounded corners */
+        margin-right: 20px;
         border: 1px solid #ddd;
     }
 
@@ -202,38 +204,38 @@
     .order-detail-page .summary-table-wrapper {
         display: flex;
         justify-content: flex-end;
-        margin-top: 30px;
+        margin-top: 40px; /* More top margin */
     }
 
     .order-detail-page .summary-table {
-        width: 450px;
+        width: 500px; /* **Wider summary table** */
         border-collapse: collapse;
     }
 
     .order-detail-page .summary-table td {
-        padding: 12px 0;
-        font-size: 1.1rem;
+        padding: 15px 0; /* **Increased padding in summary table cells** */
+        font-size: 1.25rem; /* **Larger font size for summary text** */
         color: #444;
     }
 
     .order-detail-page .summary-table .total-row {
         background-color: #eaf7ed;
         font-weight: 700;
-        font-size: 1.4rem;
+        font-size: 1.6rem; /* **Even larger total amount** */
         color: #2e7d32;
-        border-radius: 8px;
-        padding: 15px 20px;
+        border-radius: 10px; /* Consistent rounded corners */
+        padding: 20px 25px; /* **Increased padding for total row** */
     }
 
     .order-detail-page .summary-table .total-row td {
-        padding: 15px 20px;
+        padding: 20px 25px; /* Ensure padding applies to cells in total row */
     }
 
     .order-detail-page .alert {
-        padding: 15px 20px;
-        border-radius: 8px;
-        margin-top: 25px;
-        font-size: 1.05rem;
+        padding: 20px 25px; /* **Increased padding for alerts** */
+        border-radius: 10px;
+        margin-top: 30px; /* More top margin */
+        font-size: 1.15rem; /* **Larger font size for alerts** */
         display: flex;
         align-items: center;
         text-align: center;
@@ -241,8 +243,8 @@
     }
 
     .order-detail-page .alert i {
-        margin-right: 10px;
-        font-size: 1.2em;
+        margin-right: 15px; /* More space for icons */
+        font-size: 1.4em; /* Larger icons in alerts */
     }
 
     .order-detail-page .alert-warning {
@@ -258,32 +260,32 @@
     }
 
     .order-detail-page .proof-image {
-        max-width: 250px;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        margin-top: 15px;
-        border: 1px solid #eee;
+        max-width: 350px; /* **Larger proof image** */
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+        border: 1px solid #ddd;
     }
 
     .order-detail-page .button-group {
         display: flex;
         justify-content: flex-end;
-        gap: 15px;
-        margin-top: 50px;
-        padding-top: 30px;
-        border-top: 1px solid #f0f0f0;
+        gap: 20px; /* More space between buttons */
+        margin-top: 60px; /* More top margin */
+        padding-top: 40px; /* More padding above buttons */
+        border-top: 1px solid #e9ecef; /* Lighter separator line */
     }
 
     .order-detail-page .btn {
-        padding: 14px 28px;
-        border-radius: 30px;
-        font-size: 1.05rem;
-        font-weight: 600;
+        padding: 16px 32px; /* **Larger padding for buttons** */
+        border-radius: 35px; /* More rounded buttons */
+        font-size: 1.15rem; /* **Larger font size for buttons** */
+        font-weight: 700; /* Bolder buttons */
         text-decoration: none;
         transition: all 0.3s ease;
         cursor: pointer;
         border: none;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
     }
 
     .order-detail-page .btn-outline {
@@ -294,8 +296,8 @@
     .order-detail-page .btn-outline:hover {
         background-color: #6c757d;
         color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(108,117,125,0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(108,117,125,0.3);
     }
 
     .order-detail-page .btn-primary {
@@ -306,21 +308,140 @@
     .order-detail-page .btn-primary:hover {
         background-color: #388e3c;
         border-color: #388e3c;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(76,175,80,0.35);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(76,175,80,0.4);
     }
 
     .order-detail-page .no-image-icon {
-        font-size: 3rem;
+        font-size: 3.5rem; /* **Larger no image icon** */
         color: #ccc;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 60px;
-        height: 60px;
+        width: 70px; /* Match image size */
+        height: 70px; /* Match image size */
         border: 1px dashed #eee;
-        border-radius: 8px;
-        margin-right: 15px;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .order-detail-page .container {
+            max-width: 90%;
+            padding: 30px;
+            margin: 40px auto;
+        }
+        .order-detail-page .detail-card-header {
+            font-size: 2.2rem;
+            padding: 20px 30px;
+        }
+        .order-detail-page .detail-card-body {
+            padding: 30px;
+        }
+        .order-detail-page .section-heading {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+        .order-detail-page .section-heading i {
+            font-size: 2rem;
+        }
+        .order-detail-page .info-row {
+            font-size: 1.1rem;
+            padding: 10px 0;
+        }
+        .order-detail-page .status-badge {
+            font-size: 0.95rem;
+            padding: 8px 18px;
+        }
+        .order-detail-page .items-table th,
+        .order-detail-page .items-table td {
+            padding: 15px;
+            font-size: 1rem;
+        }
+        .order-detail-page .items-table img,
+        .order-detail-page .no-image-icon {
+            width: 50px;
+            height: 50px;
+        }
+        .order-detail-page .summary-table {
+            width: 100%;
+        }
+        .order-detail-page .summary-table td {
+            font-size: 1.1rem;
+        }
+        .order-detail-page .summary-table .total-row {
+            font-size: 1.3rem;
+            padding: 15px 20px;
+        }
+        .order-detail-page .alert {
+            font-size: 1rem;
+            padding: 15px 20px;
+        }
+        .order-detail-page .proof-image {
+            max-width: 200px;
+        }
+        .order-detail-page .button-group {
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+        .order-detail-page .btn {
+            padding: 12px 20px;
+            font-size: 1rem;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .order-detail-page .container {
+            padding: 20px;
+            margin: 20px auto;
+        }
+        .order-detail-page .detail-card-header {
+            font-size: 1.8rem;
+            padding: 15px 20px;
+        }
+        .order-detail-page .section-heading {
+            font-size: 1.5rem;
+        }
+        .order-detail-page .section-heading i {
+            font-size: 1.7rem;
+        }
+        .order-detail-page .info-row {
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 1rem;
+        }
+        .order-detail-page .info-row span,
+        .order-detail-page .info-row p {
+            text-align: left;
+            margin-top: 5px;
+        }
+        .order-detail-page .status-badge {
+            margin-left: 0;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+        }
+        .order-detail-page .items-table th,
+        .order-detail-page .items-table td {
+            font-size: 0.9rem;
+            padding: 10px;
+        }
+        .order-detail-page .items-table img,
+        .order-detail-page .no-image-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .order-detail-page .summary-table td {
+            font-size: 1rem;
+        }
+        .order-detail-page .summary-table .total-row {
+            font-size: 1.2rem;
+        }
     }
 
     /* Ensure Font Awesome is loaded for icons */

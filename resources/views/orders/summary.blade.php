@@ -13,7 +13,7 @@
     /* Container Styling */
     .order-history-container { /* New class for the container */
         padding: 50px 30px; /* More vertical padding */
-        max-width: 1000px; /* Wider container for more cards per row */
+        max-width: 1200px; /* **Increased width for a wider layout** */
         margin: 50px auto; /* Centered with generous top/bottom margin */
         background-color: #ffffff;
         border-radius: 20px; /* Even more rounded corners for a softer, modern look */
@@ -308,6 +308,20 @@
         border-color: #dee2e6;
         opacity: 0.7;
     }
+
+    /* Responsive Adjustments */
+    @media (min-width: 992px) { /* For large devices and up */
+        .col-lg-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) { /* For medium devices */
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
 </style>
 
 <div class="order-history-container">
@@ -342,21 +356,17 @@
 
                         <div class="order-card-actions">
                             @if($order->payment_status === 'pending' && $order->order_status !== 'cancelled')
-                                <a href="/payment/confirm/{{ $order->id }}"  class="btn-action-custom btn-action-warning-custom">
+                                <a href="{{ route('payment.confirm', $order->id) }}" class="btn-action-custom btn-action-warning-custom">
                                     Continue Payment
                                 </a>
                             @elseif($order->payment_status === 'failed' && $order->order_status !== 'cancelled')
-                                <a href="/payment/confirm/{{ $order->id }}"  class="btn-action-custom btn-action-warning-custom">
-                                    Continue Payment
+                                <a href="{{ route('payment.confirm', $order->id) }}" class="btn-action-custom btn-action-warning-custom">
+                                    Retry Payment
                                 </a>
-                                Route::get('/payment/confirm/{order}', [OrdersController::class, 'showconfirmPayment'])->name('payment.confirm');
                             @else
                                 <a href="{{ route('orders.detail', $order->id) }}" class="btn-action-custom btn-action-outline-primary-custom">
                                     View Details
                                 </a>
-                                {{-- <a href="/payment/confirm/{{ $order->id }}" class="btn-action-custom btn-action-outline-primary-custom">
-                                    View Details
-                                </a> --}}
                             @endif
                         </div>
                     </div>
