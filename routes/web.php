@@ -37,7 +37,7 @@ Route::get('/createarticle',function(){
     return view('article.newarticle');
 })->name('create_articles')->middleware(['auth:consultants']);
 // Route::post('/createarticles', [ArticleController::class, 'input_handler'])->middleware(['auth:customers']);
-Route::post('/createarticles', [ArticleController::class, 'input_handler'])->middleware('auth');
+Route::post('/createarticles', [ArticleController::class, 'input_handler'])->middleware(['auth:consultants']);
 
 
 // BMI
@@ -91,7 +91,7 @@ Route::put('/deliveries/{id}', [DeliveriesController::class, 'update'])->name('c
 
 
 // chats untuk customers
-Route::get('/consultant', [ChatsController::class, 'indexConsultants'])->name('customer.consultants.index')->middleware(['auth:customers']);
+Route::get('/consultations', [ChatsController::class, 'indexConsultants'])->name('customer.consultants.index')->middleware(['auth:customers']);
 // Rute untuk memulai chat dengan konsultan tertentu
 Route::post('/chat/{consultant}', [ChatsController::class, 'startChat'])->name('customer.chat.start')->middleware(['auth:customers']);
 Route::get('/chat/{chat}', [ChatsController::class, 'showChat'])->name('customer.chat.show')->middleware(['auth:customers']);

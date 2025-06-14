@@ -15,10 +15,10 @@ class MessagesController extends Controller
     {
         // Dapatkan konsultan yang sedang login
         $consultant = Auth::guard('consultants')->user(); // Sesuaikan guard Anda
-
+        $consultantId = $consultant->id;
         // Ambil semua chat yang melibatkan konsultan ini, dan muat data customer
         // Urutkan berdasarkan waktu update terbaru agar chat yang aktif muncul di atas
-        $chats = Chats::where('consultant_id', $consultant->id)
+        $chats = Chats::where('consultant_id', $consultantId)
                       ->with('customer') // Memuat relasi customer
                       ->orderBy('updated_at', 'desc') // Urutkan berdasarkan waktu update chat
                       ->get();

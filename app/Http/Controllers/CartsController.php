@@ -289,6 +289,7 @@ class CartsController extends Controller
     //     return redirect()->back()->with('error', 'Item tidak ditemukan.');
     // }
 
+    // asli
     public function updateQuantity(Request $request)
     {
         // Validate the entire quantities array

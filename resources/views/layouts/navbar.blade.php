@@ -77,6 +77,7 @@
                 @if(Auth::guard('customers')->check())
                     {{-- Hanya customer, hanya bisa akses Articles --}}
                     <a class="nav-link" href="{{ url('/articles') }}">Blogs</a>
+                    <a class="nav-link" href="{{ url('/consultations') }}">Consultations</a>
                     <a class="nav-link" href="{{ url('/forums') }}">Forums</a>
                     <a class="nav-link" href="{{ url('/bmirecord') }}">BMI Tracker</a>
                     <a class="nav-link" href="{{ url('/supplements') }}">Supplements</a>
@@ -90,6 +91,7 @@
                     {{-- Consultant bisa akses Dashboard dan Service --}}
                     {{-- <a class="nav-link" href="">Dashboard</a> --}}
                     <a class="nav-link" href="{{ url('/articles') }}">Blogs</a>
+                    <a class="nav-link" href="{{ url('/chats') }}">Consultations</a>
                     {{-- <a class="nav-link" href="{{ url('/forums') }}">Forums</a> --}}
                     {{-- <a class="nav-link" href="#service">Service</a> --}}
                 @else

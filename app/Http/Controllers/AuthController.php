@@ -195,6 +195,8 @@ class AuthController extends Controller
             // Redirect sesuai guard
             if ($guard === 'couriers') {
                 return redirect()->route('courier.deliveries.index');
+            } elseif ($guard === 'consultants') { // Tambahkan kondisi ini
+                return redirect()->route('articles');
             }
 
             return redirect()->intended('/');
