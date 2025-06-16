@@ -63,10 +63,15 @@ class ForumResource extends Resource
                     // ->defaultImageUrl(asset('images/noimage.png')), // jika kosong
                 // TextColumn::make('ForumImage')->label('Nama File Gambar'),
 
-                ImageColumn::make('ForumImage')
-                    ->label('Image')
-                    ->size(50) // atur ukuran (width & height) dalam pixel
-                    ->url(fn ($record) => asset('storage/forumimages/' . $record->ForumImage)),
+                // ImageColumn::make('ForumImage')
+                //     ->label('Image')
+                //     ->size(50) // atur ukuran (width & height) dalam pixel
+                //     ->url(fn ($record) => asset('storage/forumimages/' . $record->ForumImage)),
+                ImageColumn::make('image_path') // Buat kolom "virtual" atau gunakan accessor di model
+                ->label('Image')
+                ->getStateUsing(fn ($record) => asset('storage/forumimages/' . $record->ForumImage))
+                ->size(50)
+                ->url(fn ($record) => asset('storage/forumimages/' . $record->ForumImage)), // Pastikan URL klik juga sama
 
                 TextColumn::make('ForumContent')
                     ->label('Content Preview')
@@ -87,7 +92,7 @@ class ForumResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

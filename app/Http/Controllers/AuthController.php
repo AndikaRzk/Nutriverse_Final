@@ -22,9 +22,6 @@ class AuthController extends Controller
         return view('components.register');
     }
 
-    // public function dashboard(){
-    //     return view('components.dashboard');
-    // }
     public function dashboard()
     {
         $supplements = Supplement::all();
@@ -36,37 +33,6 @@ class AuthController extends Controller
 
         return view('components.dashboard', compact('supplements', 'articles', 'totalCustomers', 'totalCouriers', 'totalConsultants'));
     }
-
-    // public function register(Request $request){
-    //     // Validasi data input
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:customers,email',
-    //         'phone' => 'required|string|max:15',
-    //         'address' => 'nullable|string|max:255',  // Optional
-    //         'password' => 'required|string|min:6|confirmed',
-    //     ], [
-    //         'name.required' => 'Nama lengkap wajib diisi.',
-    //         'email.required' => 'Alamat email wajib diisi.',
-    //         'email.email' => 'Format email tidak valid.',
-    //         'email.unique' => 'Email ini sudah terdaftar.',
-    //         'phone.required' => 'Nomor telepon wajib diisi.',
-    //         'password.required' => 'Kata sandi wajib diisi.',
-    //         'password.min' => 'Kata sandi harus terdiri dari minimal 6 karakter.',
-    //         'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
-    //     ]);
-
-    //     // Membuat customer baru
-    //     Customer::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'phone' => $request->phone,
-    //         'address' => $request->address,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-
-    //     return redirect()->route('login')->with('success', 'Account created successfully.');
-    // }
 
     public function register(Request $request)
     {
@@ -108,63 +74,6 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Account created successfully.');
     }
-
-    // public function login(Request $request){
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required|string',
-    //     ]);
-
-    //     $guards = ['customers', 'couriers', 'consultants'];
-
-    //     foreach ($guards as $guard) {
-    //         if (Auth::guard($guard)->attempt([
-    //             'email' => $request->email,
-    //             'password' => $request->password
-    //         ])) {
-    //             $request->session()->regenerate();
-    //             return redirect()->intended('/');
-    //         }
-    //     }
-
-    //     throw ValidationException::withMessages([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ]);
-    // }
-
-    // public function login(Request $request){
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required|string',
-    //     ]);
-
-    //     $guards = ['customers', 'couriers', 'consultants'];
-
-    //     foreach ($guards as $guard) {
-    //         if (Auth::guard($guard)->attempt([
-    //             'email' => $request->email,
-    //             'password' => $request->password
-    //         ])) {
-    //             $request->session()->regenerate();
-
-    //             // Jika yang login adalah consultant, update is_online ke true
-    //             if ($guard === 'consultants') {
-    //                 $consultant = Auth::guard('consultants')->user();
-
-    //                 if ($consultant instanceof \App\Models\Consultant) {
-    //                     $consultant->is_online = true;
-    //                     $consultant->save();
-    //                 }
-    //             }
-
-    //             return redirect()->intended('/');
-    //         }
-    //     }
-
-    //     throw ValidationException::withMessages([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ]);
-    // }
 
     public function login(Request $request)
 {
@@ -208,25 +117,6 @@ class AuthController extends Controller
     ]);
 }
 
-
-
-    // public function logout(Request $request)
-    // {
-    //     if (Auth::guard('customers')->check()) {
-    //         Auth::guard('customers')->logout();
-    //     } elseif (Auth::guard('couriers')->check()) {
-    //         Auth::guard('couriers')->logout();
-    //     } elseif (Auth::guard('consultants')->check()) {
-    //         Auth::guard('consultants')->logout();
-    //     }
-
-    //     // Invalidate and regenerate the session
-    //     $request->session()->invalidate();
-    //     $request->session()->regenerateToken();
-
-    //     // Redirect the user to the login page with a success message
-    //     return redirect()->route("show.login")->with('success', 'You have been logged out.');
-    // }
 
     public function logout(Request $request)
     {

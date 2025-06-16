@@ -23,36 +23,6 @@ class ForumController extends Controller
             return redirect()->back();
         }
     }
-    // function input_handler(Request $req){
-    //     $validator=$req->validate([
-    //         'title'=>['required','max:255'],
-    //         'content'=>['required'],
-    //         // 'id'=>['required'],
-    //         'ForumImage' =>['nullable','file','image'],
-    //     ]);
-    //     $forum=new Forum;
-    //     $forum->ForumTitle=$req->title;
-    //     $forum->ForumContent=$req->content;
-    //     // $forum->ForumCreator=$req->id;
-    //     $forum->ForumCreator=Auth::id();
-    //     $time=now()->format('Y-m-d-H-i-s');
-    //     if($req->ForumImage !==null){
-    //         $extension=$req->ForumImage->getClientOriginalExtension();
-    //         $newtitle=$req->title;
-    //         $newtitle=preg_replace('/[^A-Za-z0-9]/','s',$newtitle);
-    //         $renamed=$newtitle.$time.'.'.$extension;
-    //         $forum->ForumImage=$renamed;
-    //         $req->ForumImage->storeAs("forumimages",$renamed);
-    //     }
-    //     else{
-    //         $forum->ForumImage=null;
-    //     }
-    //     $forum->CreatedAt=$time;
-    //     $forum->save();
-    //     $value=$forum->ForumID;
-    //     // Alert::success('Berhasil 🎉', 'Data telah berhasil ditambahkan!');
-    //     return redirect("/forumpost/$value");
-    // }
 
     function input_handler(Request $req) {
         $validator = $req->validate([
@@ -95,49 +65,6 @@ class ForumController extends Controller
         return redirect("/forumpost/$value");
     }
 
-    // function input_handler(Request $req) {
-    //     $req->validate([
-    //         'title' => ['required', 'max:255'],
-    //         'content' => ['required'],
-    //         'ForumImage' => ['nullable', 'file', 'image'],
-    //     ]);
-
-    //     $forum = new Forum;
-    //     $forum->ForumTitle = $req->title;
-    //     $forum->ForumContent = $req->content;
-
-    //     // Ambil ID user yang sedang login
-    //     $forum->ForumCreator = Auth::id(); // Pastikan kamu pakai guard yang sesuai kalau bukan default
-
-    //     // Format timestamp untuk penamaan file
-    //     $time = now()->format('Y-m-d-H-i-s');
-
-    //     if ($req->hasFile('ForumImage')) {
-    //         $extension = $req->file('ForumImage')->getClientOriginalExtension();
-    //         $newtitle = preg_replace('/[^A-Za-z0-9]/', 's', $req->title);
-    //         $renamed = $newtitle . $time . '.' . $extension;
-
-    //         // Simpan ke storage/app/public/forumimages/
-    //         $req->file('ForumImage')->storeAs('public/forumimages', $renamed);
-
-    //         // Simpan nama file saja ke DB
-    //         $forum->ForumImage = $renamed;
-    //     } else {
-    //         $forum->ForumImage = null;
-    //     }
-
-    //     // Simpan waktu buat sendiri (CreatedAt)
-    //     $forum->CreatedAt = $time;
-
-    //     // Laravel otomatis handle created_at dan updated_at
-    //     $forum->save();
-
-    //     return redirect("/forumpost/{$forum->ForumID}");
-    // }
-    // function generalforumview(){
-    //     $allforums = Forum::orderBy('created_at', 'DESC')->paginate(4);
-    //     return view('forum.allforums',['forums'=>$allforums]);
-    // }
     function generalforumview(){
         $allforums = Forum::with('customer') // Eager load the customer relationship
                            ->orderBy('created_at', 'DESC')

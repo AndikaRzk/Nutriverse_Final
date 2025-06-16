@@ -438,7 +438,7 @@
     <hr class="hr-divider">
 
     {{-- Food Recommendation Section --}}
-    <div class="row justify-content-center mt-5">
+    {{-- <div class="row justify-content-center mt-5">
         <div class="col-md-9 col-lg-8">
             <div class="card shadow-lg rounded-4 animate__animated animate__fadeInUp">
                 <div class="card-header bg-gradient-green-modern text-white text-center py-4 rounded-top-4">
@@ -514,7 +514,154 @@
             </div>
         @endforeach
     </div>
-    @endif
+    @endif --}}
+{{-- Food Recommendation Section --}}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-9 col-lg-8">
+        <div class="card shadow-lg rounded-4 animate__animated animate__fadeInUp">
+            <div class="card-header bg-gradient-green-modern text-white text-center py-4 rounded-top-4">
+                <h3 class="mb-2 fw-bold fs-3 text-shadow-lg">Daily Meal Planner</h3>
+                <p class="mb-0 text-white-75 fs-5">Tailored meals for your daily calorie needs</p>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <form action="{{ route('recommend.foods') }}" method="POST">
+                    @csrf
+                    <div class="mb-5"> {{-- Increased bottom margin for better spacing --}}
+                        <label for="daily_calories" class="form-label d-flex align-items-center mb-3">
+                            <i class="bi bi-fire text-orange-icon me-3 fs-4"></i> {{-- Larger icon, more margin --}}
+                            <span class="fw-bold text-dark fs-5">Your Desired Daily Calories (kcal)</span>
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control form-control-lg custom-input-focus @error('daily_calories') is-invalid @enderror"
+                            name="daily_calories"
+                            value="{{ old('daily_calories', session('daily_calories')) }}"
+                            placeholder="e.g., 2000"
+                            required>
+                        @error('daily_calories')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="row g-4 mb-5"> {{-- Added bottom margin for the row --}}
+                        <div class="col-md-4">
+                            <label for="allergies_protein" class="form-label d-flex align-items-center mb-2">
+                                <i class="bi bi-egg-fried text-brown-icon me-2 fs-5"></i>
+                                <span class="fw-medium text-muted">Allergies: Proteins</span>
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control custom-input-focus @error('allergies_protein') is-invalid @enderror"
+                                name="allergies_protein"
+                                id="allergies_protein"
+                                value="{{ old('allergies_protein', session('selected_allergies_protein_string')) }}"
+                                placeholder="e.g., Ayam, Telur"
+                            >
+                            <small class="form-text text-muted fst-italic mt-1">Separate with commas</small> {{-- Added helpful text --}}
+                            @error('allergies_protein')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="allergies_fruit" class="form-label d-flex align-items-center mb-2">
+                                <i class="bi bi-apple text-red-icon me-2 fs-5"></i>
+                                <span class="fw-medium text-muted">Allergies: Fruits</span>
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control custom-input-focus @error('allergies_fruit') is-invalid @enderror"
+                                name="allergies_fruit"
+                                id="allergies_fruit"
+                                value="{{ old('allergies_fruit', session('selected_allergies_fruit_string')) }}"
+                                placeholder="e.g., Mangga, Alpukat"
+                            >
+                            <small class="form-text text-muted fst-italic mt-1">Separate with commas</small>
+                            @error('allergies_fruit')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="allergies_vegetable" class="form-label d-flex align-items-center mb-2">
+                                <i class="bi bi-basket text-green-icon me-2 fs-5"></i>
+                                <span class="fw-medium text-muted">Allergies: Vegetables</span>
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control custom-input-focus @error('allergies_vegetable') is-invalid @enderror"
+                                name="allergies_vegetable"
+                                id="allergies_vegetable"
+                                value="{{ old('allergies_vegetable', session('selected_allergies_vegetable_string')) }}"
+                                placeholder="e.g., Bayam, Kangkung"
+                            >
+                            <small class="form-text text-muted fst-italic mt-1">Separate with commas</small>
+                            @error('allergies_vegetable')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-5">
+                        <button type="submit" class="btn btn-green-modern btn-lg fw-bold animate__animated animate__pulse animate__infinite">
+                            <i class="bi bi-lightning-charge me-2"></i> Get Recommendations
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(session('recommended_foods'))
+<div class="mt-5 animate__animated animate__fadeInUp">
+    <h4 class="mb-4 text-center fw-bold text-dark-green fs-3">
+        <i class="bi bi-egg-fill me-2" style="color: var(--primary-green);"></i> Personalized Food Recommendations for
+        <span class="text-primary-green">{{ session('daily_calories') }} kcal</span>
+    </h4>
+
+    @foreach (session('recommended_foods') as $mealTime => $categories)
+        <div class="card mb-4 shadow-sm rounded-3">
+            <div class="card-header bg-gradient-green-modern text-white text-capitalize rounded-top-3 py-3">
+                <h5 class="mb-0 fw-bold text-shadow-sm fs-4">{{ $mealTime }}</h5>
+            </div>
+            <div class="card-body p-4">
+                @foreach ($categories as $category => $foods)
+                    <div class="mb-4">
+                        <h6 class="text-capitalize mb-3">
+                            <span class="badge bg-accent-badge py-2 px-3 fs-5">
+                                <i class="bi bi-tag-fill me-1"></i> {{ $category }}
+                            </span>
+                        </h6>
+
+                        @if(count($foods) > 0)
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                @foreach ($foods as $food)
+                                    <div class="col">
+                                        <div class="card h-100 border food-card-hover">
+                                            <div class="card-body d-flex flex-column">
+                                                <h6 class="card-title mb-2">{{ $food->name }}</h6>
+                                                <hr class="my-2 opacity-50">
+                                                <p class="card-text mb-1"><i class="bi bi-fire food-icon-color text-red-icon"></i> Calories: <strong>{{ $food->calories }} kcal</strong></p>
+                                                <p class="card-text mb-1"><i class="bi bi-box-seam food-icon-color text-blue-icon"></i> Portion Size: <strong>{{ $food->portion_size_grams }} grams</strong></p>
+                                                <p class="card-text mb-1"><i class="bi bi-egg-fried food-icon-color text-brown-icon"></i> Protein: <strong>{{ $food->protein_g }}g</strong></p>
+                                                <p class="card-text mb-1"><i class="bi bi-rice-bowl-fill food-icon-color text-orange-icon"></i> Carbs: <strong>{{ $food->carbs_g }}g</strong></p>
+                                                <p class="card-text"><i class="bi bi-oil-can-fill food-icon-color text-yellow-icon"></i> Fat: <strong>{{ $food->fat_g }}g</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <p class="text-muted fst-italic fs-6">No food available in this category or filtered out due to allergies.</p>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
+</div>
+@endif
 
     <hr class="hr-divider">
 

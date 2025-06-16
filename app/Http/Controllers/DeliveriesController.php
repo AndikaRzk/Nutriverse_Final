@@ -38,37 +38,6 @@ class DeliveriesController extends Controller
         return view('courier.detail', compact('delivery'));
     }
 
-    /**
-     * Update data pengiriman oleh kurir
-     */
-    // public function update(Request $request, $id)
-    // {
-    //     $delivery = Deliveries::findOrFail($id);
-
-    //     if ($delivery->courier_id !== Auth::guard('couriers')->id()) {
-    //         abort(403, 'Unauthorized');
-    //     }
-
-    //     $validated = $request->validate([
-    //         'delivery_status' => 'required|in:assigned,picking_up,on_the_way,delivered,failed',
-    //         'pickup_at' => 'nullable|date',
-    //         'delivered_at' => 'nullable|date',
-    //         'delivery_notes' => 'nullable|string',
-    //         'proof_of_delivery_image' => 'nullable|image|max:2048',
-    //     ]);
-
-    //     // Handle upload jika ada bukti pengiriman
-    //     if ($request->hasFile('proof_of_delivery_image')) {
-    //         $path = $request->file('proof_of_delivery_image')->store('delivery_proofs', 'public');
-    //         $validated['proof_of_delivery_image'] = $path;
-    //     }
-
-    //     $delivery->update($validated);
-
-    //     return redirect()->route('courier.deliveries.show', $id)
-    //                      ->with('success', 'Pengiriman berhasil diperbarui.');
-    // }
-
     public function update(Request $request, $id)
 {
     $delivery = Deliveries::findOrFail($id);

@@ -41,9 +41,10 @@ Route::post('/createarticles', [ArticleController::class, 'input_handler'])->mid
 
 
 // BMI
-Route::get('/bmirecord',function(){
-    return view('customer.bmi');
-})->name('bmirecord')->middleware(['auth:customers']);
+// Route::get('/bmirecord',function(){
+//     return view('customer.bmi');
+// })->name('bmirecord')->middleware(['auth:customers']);
+Route::get('/bmirecord', [BmiRecordController::class, 'showForm'])->name('bmirecord')->middleware(['auth:customers']);
 Route::post('/bmi', [BmiRecordController::class, 'store'])->name('bmi.store')->middleware(['auth:customers']);
 
 Route::post('/recommend-foods', [BmiRecordController::class, 'recommendFoods'])->name('recommend.foods')->middleware(['auth:customers']);
